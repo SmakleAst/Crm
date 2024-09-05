@@ -1,5 +1,8 @@
-﻿using Identity.Application.Interfaces;
+﻿using Identity.Application.Common.Exceptions;
+using Identity.Application.Interfaces;
+using Identity.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Identity.Application.Users.Queries.LoginUser
 {
@@ -14,7 +17,16 @@ namespace Identity.Application.Users.Queries.LoginUser
 
         public async Task<LoginUserVm> Handle(LoginUserQuery request, CancellationToken cancellationToken)
         {
-            var 
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(entity => entity.Email.ToLower().Equals(request.Email.ToLower()), cancellationToken)
+                ?? throw new NotFoundException(nameof(User), request.Email);
+
+            if (!_passwordHasher.Verify(request.Password, user.Password))
+            {
+                throw new NotFoundException(nameof(User), request.Password);
+            }
+
+            return new LoginUserVm { Token = _jwtToken.Generate(user) };
         }
     }
 }
