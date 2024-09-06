@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Identity.Application.Common.Mappings;
-using Identity.Application.Users.Queries.GetUserDetails;
 using Identity.Domain.Entities;
 using Identity.Domain.Enums;
 
@@ -14,12 +13,12 @@ namespace Identity.Application.Users.Queries.GetUserList
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<User, UserDetailsVm>()
-                .ForMember(userDetailsVm => userDetailsVm.Email,
+            profile.CreateMap<User, UserLookupDto>()
+                .ForMember(userLookupVm => userLookupVm.Email,
                     opt => opt.MapFrom(user => user.Email))
-                .ForMember(userDetailsVm => userDetailsVm.Password,
+                .ForMember(userLookupVm => userLookupVm.Password,
                     opt => opt.MapFrom(user => user.Password))
-                .ForMember(userDetailsVm => userDetailsVm.Role,
+                .ForMember(userLookupVm => userLookupVm.Role,
                     opt => opt.MapFrom(user => user.Role));
         }
     }
