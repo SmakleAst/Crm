@@ -23,6 +23,16 @@ namespace Identity.Api.Controllers.v1
         public UsersController(IMapper mapper) =>
             _mapper = mapper;
 
+        /// <summary>
+        /// Gets the list of users
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// GET /users
+        /// </remarks>
+        /// <returns>Returns UserListVm</returns>
+        /// <response code="200">Success</response>
+        /// <response code="401">If unauthorize</response>
         [HttpGet]
         [Authorize(Roles = "0")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -36,6 +46,18 @@ namespace Identity.Api.Controllers.v1
             return Ok(vm);
         }
 
+        /// <summary>
+        /// Gets the user by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// GET /users/6F9619FF-8B86-D011-B42D-00CF4FC964FF
+        /// </remarks>
+        /// <param name="id">User id (guid)</param>
+        /// <returns>Returns UserDetailsVm</returns>
+        /// <response code="200">Success</response>
+        /// <response code="401">If unauthorized</response>
+        /// <response code="404">If the user not found</response>
         [HttpGet("{id}")]
         [Authorize(Roles = "0")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -50,6 +72,23 @@ namespace Identity.Api.Controllers.v1
             return Ok(vm);
         }
 
+
+        /// <summary>
+        /// Creates the user
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// POST /users
+        /// {
+        ///     Email: "test@mail.ru",
+        ///     Password: "testpassword"
+        /// }
+        /// </remarks>
+        /// <param name="createUserDto">CreateUserDto object</param>
+        /// <returns>Returns id (guid) created user</returns>
+        /// <response code="204">Success</response>
+        /// <response code="401">If unauthorized</response>
+        /// <response code="409">If the user with same email already exists</response>
         [HttpPost]
         [Authorize(Roles = "0")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -64,6 +103,24 @@ namespace Identity.Api.Controllers.v1
             return CreatedAtAction(nameof(Create), userId);
         }
 
+
+        /// <summary>
+        /// Updates the user
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// PUT /users
+        /// {
+        ///     Id: 6F9619FF-8B86-D011-B42D-00CF4FC964FF,
+        ///     Email: test@mail.ru,
+        ///     Password: "testpassword"
+        /// }
+        /// </remarks>
+        /// <param name="updateUserDto">UpdateuserDto object</param>
+        /// <returns>Returns NoContent</returns>
+        /// <response code="204">Success</response>
+        /// <response code="401">If unauthorized</response>
+        /// <response code="404">If the user with same id not found</response>
         [HttpPut]
         [Authorize(Roles = "0")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -78,6 +135,22 @@ namespace Identity.Api.Controllers.v1
             return NoContent();
         }
 
+        /// <summary>
+        /// Patchs the user
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// PATCH /users
+        /// {
+        ///     Id: 6F9619FF-8B86-D011-B42D-00CF4FC964FF,
+        ///     Email: test@mail.ru
+        /// }
+        /// </remarks>
+        /// <param name="patchUserDto">PatchUserDto object</param>
+        /// <returns>Returns NoContent</returns>
+        /// <response code="204">Success</response>
+        /// <response code="401">If unauthorized</response>
+        /// <response code="404">If the user with same id not found</response>
         [HttpPatch]
         [Authorize(Roles = "0")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -92,6 +165,18 @@ namespace Identity.Api.Controllers.v1
             return NoContent();
         }
 
+        /// <summary>
+        /// Deletes the user by id
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// DELETE /users/6F9619FF-8B86-D011-B42D-00CF4FC964FF
+        /// </remarks>
+        /// <param name="id">User id (guid)</param>
+        /// <returns>Returns NoContent</returns>
+        /// <response code="204">Success</response>
+        /// <response code="401">If unauthorized</response>
+        /// <response code="404">If the user with same id not found</response>
         [HttpDelete("{id}")]
         [Authorize(Roles = "0")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -106,6 +191,21 @@ namespace Identity.Api.Controllers.v1
             return NoContent();
         }
 
+        /// <summary>
+        /// Logins the user
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// POST /users/login
+        /// {
+        ///     Email: "test@mail.ru",
+        ///     Password: "testpassword"  
+        /// }
+        /// </remarks>
+        /// <param name="loginUserDto">LoginUserDto object</param>
+        /// <returns>Returns LoginUserVm</returns>
+        /// <response code="200">Success</response>
+        /// <response code="404">If the user with same email and password not found</response>
         [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
