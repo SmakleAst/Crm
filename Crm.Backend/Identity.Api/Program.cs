@@ -1,6 +1,7 @@
 using Asp.Versioning;
 using Asp.Versioning.ApiExplorer;
 using Identity.Api;
+using Identity.Api.Middlewares;
 using Identity.Application;
 using Identity.Application.Common.Mappings;
 using Identity.Application.Interfaces;
