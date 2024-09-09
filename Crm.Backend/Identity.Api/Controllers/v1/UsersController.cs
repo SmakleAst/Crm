@@ -34,7 +34,7 @@ namespace Identity.Api.Controllers.v1
         /// <response code="200">Success</response>
         /// <response code="401">If unauthorize</response>
         [HttpGet]
-        [Authorize(Roles = "0")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<UserListVm>> GetAll()
@@ -59,7 +59,7 @@ namespace Identity.Api.Controllers.v1
         /// <response code="401">If unauthorized</response>
         /// <response code="404">If the user not found</response>
         [HttpGet("{id}")]
-        [Authorize(Roles = "0")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -90,7 +90,7 @@ namespace Identity.Api.Controllers.v1
         /// <response code="401">If unauthorized</response>
         /// <response code="409">If the user with same email already exists</response>
         [HttpPost]
-        [Authorize(Roles = "0")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -122,7 +122,7 @@ namespace Identity.Api.Controllers.v1
         /// <response code="401">If unauthorized</response>
         /// <response code="404">If the user with same id not found</response>
         [HttpPut]
-        [Authorize(Roles = "0")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -152,7 +152,7 @@ namespace Identity.Api.Controllers.v1
         /// <response code="401">If unauthorized</response>
         /// <response code="404">If the user with same id not found</response>
         [HttpPatch]
-        [Authorize(Roles = "0")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -178,7 +178,7 @@ namespace Identity.Api.Controllers.v1
         /// <response code="401">If unauthorized</response>
         /// <response code="404">If the user with same id not found</response>
         [HttpDelete("{id}")]
-        [Authorize(Roles = "0")]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -215,7 +215,7 @@ namespace Identity.Api.Controllers.v1
 
             var vm = await Mediator.Send(query);
 
-            return Ok();
+            return Ok(vm);
         }
     }
 }

@@ -11,11 +11,11 @@ namespace Identity.Api.Models
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<CreateUserCommand, CreateUserDto>()
-                .ForMember(createUserDto => createUserDto.Email,
-                    opt => opt.MapFrom(createUserCommand => createUserCommand.Email))
-                .ForMember(createUserDto => createUserDto.Password,
-                    opt => opt.MapFrom(createUserCommand => createUserCommand.Password));
+            profile.CreateMap<CreateUserDto, CreateUserCommand>()
+                .ForMember(createUserCommand => createUserCommand.Email,
+                    opt => opt.MapFrom(createUserDto => createUserDto.Email))
+                .ForMember(createUserCommand => createUserCommand.Password,
+                    opt => opt.MapFrom(createUserDto => createUserDto.Password));
         }
     }
 }

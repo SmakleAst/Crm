@@ -12,13 +12,13 @@ namespace Identity.Api.Models
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<UpdateUserCommand, UpdateUserDto>()
-                .ForMember(updateUserDto => updateUserDto.Id,
-                    opt => opt.MapFrom(updateUserCommand => updateUserCommand.Id))
-                .ForMember(updateUserDto => updateUserDto.Email,
-                    opt => opt.MapFrom(updateUserCommand => updateUserCommand.Email))
-                .ForMember(updateUserDto => updateUserDto.Password,
-                    opt => opt.MapFrom(updateUserCommand => updateUserCommand.Password));
+            profile.CreateMap<UpdateUserDto, UpdateUserCommand>()
+                .ForMember(updateUserCommand => updateUserCommand.Id,
+                    opt => opt.MapFrom(updateUserDto => updateUserDto.Id))
+                .ForMember(updateUserCommand => updateUserCommand.Email,
+                    opt => opt.MapFrom(updateUserDto => updateUserDto.Email))
+                .ForMember(updateUserCommand => updateUserCommand.Password,
+                    opt => opt.MapFrom(updateUserDto => updateUserDto.Password));
         }
     }
 }
