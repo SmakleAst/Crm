@@ -26,8 +26,8 @@ namespace Crm.Application.Clients.Commands.CreateClient
                 .When(createClientCommand => createClientCommand.MiddleName != null);
 
             RuleFor(createClientCommand => createClientCommand.BirthDay)
-                .LessThan(_ => DateTime.Now.AddYears(-18)).WithMessage("Client should be older than 18 age.")
-                .GreaterThan(_ => DateTime.Now.AddYears(-120)).WithMessage("Client should be younger than 120 age.")
+                .LessThan(_ => DateTime.Now.AddYears(-18)).WithMessage("Client should be older than 18 years.")
+                .GreaterThan(_ => DateTime.Now.AddYears(-120)).WithMessage("Client should be younger than 120 years.")
                 .When(createClientCommand => createClientCommand.BirthDay != null);
 
             RuleFor(createClientCommand => createClientCommand.Email)

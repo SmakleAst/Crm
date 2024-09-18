@@ -16,7 +16,7 @@ namespace Crm.Application.Clients.Commands.CreateClient
         public async Task<Guid> Handle(CreateClientCommand request, CancellationToken cancellationToken)
         {
             var client = await _dbContext.Clients
-                .FirstOrDefaultAsync(client => client.ClientCode.ToLower().Equals(request.ClientCode.ToLower()));
+                .FirstOrDefaultAsync(client => client.ClientCode.ToLower().Equals(request.ClientCode.ToLower()), cancellationToken);
 
             if (client != null)
             {
