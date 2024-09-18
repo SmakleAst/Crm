@@ -21,15 +21,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Persistence", "Ide
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Api", "Identity.Api\Identity.Api.csproj", "{828252FD-B305-41D0-9FD9-FF925EF4C68C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crm.Domain", "Crm.Domain\Crm.Domain.csproj", "{74C9D4DD-473B-43D9-9312-CECA775D8D99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crm.Domain", "Crm.Domain\Crm.Domain.csproj", "{74C9D4DD-473B-43D9-9312-CECA775D8D99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crm.Application", "Crm.Application\Crm.Application.csproj", "{75301BFF-6A8D-4BD5-B013-8D2B29C9B29A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crm.Application", "Crm.Application\Crm.Application.csproj", "{75301BFF-6A8D-4BD5-B013-8D2B29C9B29A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crm.Persistence", "Crm.Persistence\Crm.Persistence.csproj", "{CCD828FD-0AF9-4CFB-9D0B-246CFECD33CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crm.Persistence", "Crm.Persistence\Crm.Persistence.csproj", "{CCD828FD-0AF9-4CFB-9D0B-246CFECD33CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crm.Shared", "Crm.Shared\Crm.Shared.csproj", "{42F4C0F8-6180-479D-A690-2B1EEB093DB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crm.Shared", "Crm.Shared\Crm.Shared.csproj", "{42F4C0F8-6180-479D-A690-2B1EEB093DB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crm.Api", "Crm.Api\Crm.Api.csproj", "{F4360DD2-C78D-4F85-8E0B-821BE3F2FD83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crm.Api", "Crm.Api\Crm.Api.csproj", "{F4360DD2-C78D-4F85-8E0B-821BE3F2FD83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -14,6 +14,7 @@
         public string? City { get; set; }
         public string? Country { get; set; }
         public IList<Deal> Deals { get; set; }
+        public IList<Note> Notes { get; set; }
         public DateTime? EditDate { get; set; }
         public DateTime CreationDate { get; set; }
     }
