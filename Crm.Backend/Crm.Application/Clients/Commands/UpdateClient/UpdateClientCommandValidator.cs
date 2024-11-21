@@ -6,57 +6,57 @@ namespace Crm.Application.Clients.Commands.UpdateClient
     {
         public UpdateClientCommandValidator()
         {
-            RuleFor(patchClientCommand => patchClientCommand.Id)
+            RuleFor(updateClientCommand => updateClientCommand.Id)
                 .NotEmpty().WithMessage("Id is required.");
 
-            RuleFor(patchClientCommand => patchClientCommand.ClientCode)
+            RuleFor(updateClientCommand => updateClientCommand.ClientCode)
                 .NotEmpty().WithMessage("Client code can't be empty or contain only whitespace.")
                 .MaximumLength(50).WithMessage("Client code maximum length is 50 symbols.");
 
-            RuleFor(patchClientCommand => patchClientCommand.LastName)
+            RuleFor(updateClientCommand => updateClientCommand.LastName)
                 .NotEmpty().WithMessage("Last name can't be empty or contain only whitespace.")
                 .MaximumLength(50).WithMessage("Last name maximum length is 50 symbols.")
                 .When(createCllientCommand => createCllientCommand.LastName != null);
 
-            RuleFor(patchClientCommand => patchClientCommand.Name)
+            RuleFor(updateClientCommand => updateClientCommand.Name)
                 .NotEmpty().WithMessage("Name can't be empty or contain only whitespace.")
                 .MaximumLength(50).WithMessage("Name maximum length is 50 symbols.")
-                .When(patchClientCommand => patchClientCommand.Name != null);
+                .When(updateClientCommand => updateClientCommand.Name != null);
 
-            RuleFor(patchClientCommand => patchClientCommand.MiddleName)
+            RuleFor(updateClientCommand => updateClientCommand.MiddleName)
                 .NotEmpty().WithMessage("Middle name can't be empty or contain only whitespace.")
                 .MaximumLength(50).WithMessage("Middle name maximum length is 50 symbols.")
-                .When(patchClientCommand => patchClientCommand.MiddleName != null);
+                .When(updateClientCommand => updateClientCommand.MiddleName != null);
 
-            RuleFor(patchClientCommand => patchClientCommand.BirthDay)
+            RuleFor(updateClientCommand => updateClientCommand.BirthDay)
                 .LessThan(_ => DateTime.Now.AddYears(-18)).WithMessage("Client should be older than 18 years.")
                 .GreaterThan(_ => DateTime.Now.AddYears(-120)).WithMessage("Client should be younger than 120 years.")
-                .When(patchClientCommand => patchClientCommand.BirthDay != null);
+                .When(updateClientCommand => updateClientCommand.BirthDay != null);
 
-            RuleFor(patchClientCommand => patchClientCommand.Email)
+            RuleFor(updateClientCommand => updateClientCommand.Email)
                 .NotEmpty().WithMessage("Email can't be empty or contain only whitespace.")
                 .MaximumLength(30).WithMessage("Email maximum length is 50 symbols.")
-                .When(patchClientCommand => patchClientCommand.Email != null);
+                .When(updateClientCommand => updateClientCommand.Email != null);
 
-            RuleFor(patchClientCommand => patchClientCommand.Phone)
+            RuleFor(updateClientCommand => updateClientCommand.Phone)
                 .NotEmpty().WithMessage("Phone can't be empty or contain only whitespace.")
                 .MaximumLength(11).WithMessage("Phone maximum length is 50 symbols.")
-                .When(patchClientCommand => patchClientCommand.Phone != null);
+                .When(updateClientCommand => updateClientCommand.Phone != null);
 
-            RuleFor(patchClientCommand => patchClientCommand.PostalCode)
+            RuleFor(updateClientCommand => updateClientCommand.PostalCode)
                 .NotEmpty().WithMessage("PostalCode can't be empty or contain only whitespace.")
                 .MaximumLength(100).WithMessage("PostalCode maximum length is 50 symbols.")
-                .When(patchClientCommand => patchClientCommand.PostalCode != null);
+                .When(updateClientCommand => updateClientCommand.PostalCode != null);
 
-            RuleFor(patchClientCommand => patchClientCommand.City)
+            RuleFor(updateClientCommand => updateClientCommand.City)
                 .NotEmpty().WithMessage("City can't be empty or contain only whitespace.")
                 .MaximumLength(20).WithMessage("City maximum length is 50 symbols.")
-                .When(patchClientCommand => patchClientCommand.City != null);
+                .When(updateClientCommand => updateClientCommand.City != null);
 
-            RuleFor(patchClientCommand => patchClientCommand.Country)
+            RuleFor(updateClientCommand => updateClientCommand.Country)
                 .NotEmpty().WithMessage("Country can't be empty or contain only whitespace.")
                 .MaximumLength(50).WithMessage("Country maximum length is 50 symbols.")
-                .When(patchClientCommand => patchClientCommand.Country != null);
+                .When(updateClientCommand => updateClientCommand.Country != null);
         }
     }
 }
