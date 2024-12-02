@@ -18,6 +18,8 @@ namespace Crm.Application.Clients.Queries.GetClientDetails
         public async Task<ClientDetailsVm> Handle(GetClientDetailsQuery request, CancellationToken cancellationToken)
         {
             var client = await _dbContext.Clients
+                .Include(client => client.Deals)
+                .Include(client => client.Notes)
                 .FirstOrDefaultAsync(client => client.Id == request.Id, cancellationToken)
                 ?? throw new NotFoundException(nameof(Client), request.Id);
 

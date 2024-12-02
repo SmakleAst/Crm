@@ -29,6 +29,7 @@ namespace Crm.Application.Clients.Commands.UpdateClient
             client.PostalCode = request.PostalCode;
             client.City = request.City;
             client.Country = request.Country;
+            client.EditDate = DateTime.Now;
 
             _dbContext.Clients.Update(client);
             await _dbContext.SaveChangesAsync(cancellationToken);
