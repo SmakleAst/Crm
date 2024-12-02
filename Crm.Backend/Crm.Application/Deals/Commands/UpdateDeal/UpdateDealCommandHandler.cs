@@ -25,6 +25,7 @@ namespace Crm.Application.Deals.Commands.UpdateDeal
             deal.UserId = request.UserId;
             deal.ClientId = request.ClientId;
             deal.FunnelId = request.FunnelId;
+            deal.EditDate = DateTime.Now;
 
             _dbContext.Deals.Update(deal);
             await _dbContext.SaveChangesAsync(cancellationToken);

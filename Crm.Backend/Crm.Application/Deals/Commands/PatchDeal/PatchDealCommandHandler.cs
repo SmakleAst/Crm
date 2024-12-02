@@ -25,6 +25,7 @@ namespace Crm.Application.Deals.Commands.PatchDeal
             deal.UserId = request.UserId ?? deal.UserId;
             deal.ClientId = request.ClientId ?? deal.ClientId;
             deal.FunnelId = request.FunnelId ?? deal.FunnelId;
+            deal.EditDate = DateTime.Now;
 
             _dbContext.Deals.Update(deal);
             await _dbContext.SaveChangesAsync(cancellationToken);
