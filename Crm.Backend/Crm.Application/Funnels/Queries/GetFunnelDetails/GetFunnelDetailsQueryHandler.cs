@@ -18,6 +18,7 @@ namespace Crm.Application.Funnels.Queries.GetFunnelDetails
         public async Task<FunnelDetailsVm> Handle(GetFunnelDetailsQuery request, CancellationToken cancellationToken)
         {
             var funnel = await _dbContext.Funnels
+                .Include(funnel => funnel.Deals)
                 .FirstOrDefaultAsync(funnel => funnel.Id == request.Id, cancellationToken)
                 ?? throw new NotFoundException(nameof(Funnel), request.Id);
 
