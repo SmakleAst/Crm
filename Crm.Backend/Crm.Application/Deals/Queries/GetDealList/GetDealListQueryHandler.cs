@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Crm.Application.Common.Extensions;
 using Crm.Application.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ namespace Crm.Application.Deals.Queries.GetDealList
         public async Task<DealListVm> Handle(GetDealListQuery request, CancellationToken cancellationToken)
         {
             var deals = await _dbContext.Deals
+                .WhereIf(request.FunnelId != null,
+                    deal => deal.FunnelId == request.FunnelId)
                 .ProjectTo<DealLookupDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 

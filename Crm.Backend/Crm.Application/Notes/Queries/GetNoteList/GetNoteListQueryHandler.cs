@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Crm.Application.Common.Extensions;
 using Crm.Application.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ namespace Crm.Application.Notes.Queries.GetNoteList
         public async Task<NoteListVm> Handle(GetNoteListQuery request, CancellationToken cancellationToken)
         {
             var notes = await _dbContext.Notes
+                .WhereIf(request.ClientId != null,
+                    note => note.ClientId == request.ClientId)
                 .ProjectTo<NoteLookupDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
