@@ -90,7 +90,7 @@ namespace Identity.Api.Controllers.v1
         /// <response code="401">If unauthorized</response>
         /// <response code="409">If the user with same email already exists</response>
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
