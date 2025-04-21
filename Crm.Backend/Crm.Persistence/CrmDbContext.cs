@@ -11,6 +11,7 @@ namespace Crm.Persistence
         public DbSet<Funnel> Funnels { get; set; }
         public DbSet<Deal> Deals { get; set; }
         public DbSet<Note> Notes { get; set; }
+        public DbSet<Promotion> Promotions { get; set; }
 
         public CrmDbContext(DbContextOptions<CrmDbContext> options) : base(options) { }
 
@@ -20,6 +21,7 @@ namespace Crm.Persistence
             modelBuilder.ApplyConfiguration(new FunnelConfiguration());
             modelBuilder.ApplyConfiguration(new DealConfiguration());
             modelBuilder.ApplyConfiguration(new NoteConfiguration());
+            modelBuilder.ApplyConfiguration(new PromotionConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

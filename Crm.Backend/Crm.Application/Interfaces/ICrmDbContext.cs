@@ -9,6 +9,7 @@ namespace Crm.Application.Interfaces
         DbSet<Funnel> Funnels { get; set; }
         DbSet<Deal> Deals { get; set; }
         DbSet<Note> Notes { get; set; }
+        DbSet<Promotion> Promotions { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
